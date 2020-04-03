@@ -2,7 +2,7 @@ version: '3'
 
 services:
   cron:
-    image: centos:jdk8
+    image: smartycoder/crontab:jdk8
     restart: always
     volumes:
       - ./volumes/opt:/opt
