@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  cron:
+    image: smartycoder/crontab:jdk8u241
+    restart: always
+    volumes:
+      - ./volumes/opt:/opt
+      - ./volumes/etc/crontab:/etc/crontab
+    networks:
+      - default
