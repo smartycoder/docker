@@ -13,7 +13,7 @@ I created this project to fill a personal need to provide crontab image to execu
 
 #### 1. Using ```docker-compose```
 
-```console
+```yml
 version: '3'
 
 services:
@@ -29,6 +29,6 @@ services:
 
 #### 2. Using ```docker run```
 
-```console
+```
 docker run -d -v ./volumes/opt:/opt -v ./volumes/etc/crontab:/etc/crontab smartycoder/crontab:jdk8
 ```

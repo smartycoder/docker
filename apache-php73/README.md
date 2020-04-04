@@ -1,5 +1,5 @@
 
-# Running this sample
+# Running sample
 
 ```docker-compose up -d```
 
@@ -7,7 +7,7 @@
 
 #### 1. Edit ```docker-compose.yml``` where you set host IP address
 
-```
+```yaml
 services:
   www:
     .
