@@ -1,0 +1,12 @@
+
+<VirtualHost *:80>
+    ServerName www.domain.com
+    DocumentRoot "/var/www/html"
+</VirtualHost>
+
+# <VirtualHost *:80>
+#     ServerName backend.domain.com
+#     DocumentRoot "/var/www/html/backend/web"
+# </VirtualHost>
+
+

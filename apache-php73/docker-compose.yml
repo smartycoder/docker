@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  www:
+    image: smartycoder/apache:php7.3
+    container_name: www
+    ports:
+        - "80:80"
+    restart: always
+    volumes:
+      - ./volumes/www/html:/var/www/html
+      - ./volumes/www/conf/php.d:/etc/php.d:cached
+      - ./volumes/www/conf/conf.d:/etc/httpd/conf.d:cached
+      - ./volumes/www/conf/httpd.conf:/etc/httpd/conf/httpd.conf:cached
+      #- "/etc/localtime:/etc/localtime:ro"
+    environment:
+      # change the line below with your HOST IP address
+      PHP_XDEBUG_REMOTE_HOST: 192.168.1.2
+    networks:
+      - default
+  db:
+    image: mariadb
+    container_name: db
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=Pass123
+    volumes:
+      - ./volumes/db/data:/var/lib/mysql
+      #- "/etc/localtime:/etc/localtime:ro"
+    networks:
+      - default
+  
+  phpmyadmin:
+    image: smartycoder/phpmyadmin:5.0.2
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "9991:80"
+    environment: 
+      - PMA_PORTS="3307"
+    networks:
+      - default
+  
+  mail:
+    image: bytemark/smtp
+    container_name: smtp
+    restart: always
+    environment:
+      RELAY_HOST: "smtp.gmail.com"
+      RELAY_PORT: "587"
+      RELAY_USERNAME: "????"
+      RELAY_PASSWORD: "????"
+    networks:
+      - default
+  
+  cache:
+    image: memcached
+    container_name: memcached
+    command:
+      - "-m 256"
+    ports:
+      - 11211:11211
+    restart: always
+    networks:
+      - default
+  
+networks:
+    default:
+        driver: bridge
