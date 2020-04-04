@@ -1,5 +1,4 @@
 
-
 ## Project Goal
 
 I created this project to fill a personal need to provide crontab image to execute scheduled tasks (Java applications) inside Docker container.

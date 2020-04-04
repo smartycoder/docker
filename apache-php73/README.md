@@ -1,5 +1,5 @@
 
-# Running sample
+# Running sample using docker-compose.yml
 
 ```docker-compose up -d```
 
@@ -11,10 +11,8 @@
 services:
   www:
     .
-    .
       # change the line below with your HOST IP address
       PHP_XDEBUG_REMOTE_HOST: 192.168.1.2
-    .
     .
 ```
 #### 2. Run ```docker-compose up -d```
