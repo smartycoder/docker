@@ -1,4 +1,18 @@
 
+# Setting optional environment variables docker-compose.yml
+
+For the full list check [start.sh](start.sh)
+
+```
+environment:
+      PHP_XDEBUG_ENABLED: "True" # True/False
+      # change the line below with your HOST IP address
+      PHP_XDEBUG_REMOTE_HOST: 192.168.1.2
+      PHP_XDEBUG_REMOTE_PORT: 9000
+      PHP_SHORT_OPEN_TAG: "On"
+      PHP_UPLOAD_MAX_FILESIZE: "20M"
+```
+
 # Running sample using docker-compose.yml
 
 ```docker-compose up -d```
