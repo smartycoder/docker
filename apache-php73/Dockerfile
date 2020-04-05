@@ -6,7 +6,9 @@ RUN yum -y update && \
 
 EXPOSE 80
 
-# Start Apache
-CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+ADD start.sh /opt/
+RUN chmod +x /opt/start.sh
+
+CMD ["/opt/start.sh"]
 
 WORKDIR /var/www/html

@@ -9,13 +9,15 @@ services:
     restart: always
     volumes:
       - ./volumes/www/html:/var/www/html
-      - ./volumes/www/conf/php.d:/etc/php.d:cached
       - ./volumes/www/conf/conf.d:/etc/httpd/conf.d:cached
       - ./volumes/www/conf/httpd.conf:/etc/httpd/conf/httpd.conf:cached
-      #- "/etc/localtime:/etc/localtime:ro"
     environment:
+      PHP_XDEBUG_ENABLED: "True" # True/False
       # change the line below with your HOST IP address
-      PHP_XDEBUG_REMOTE_HOST: 192.168.1.2
+      PHP_XDEBUG_REMOTE_HOST: 192.168.1.4
+      PHP_XDEBUG_REMOTE_PORT: 9000
+      PHP_SHORT_OPEN_TAG: "On"
+      PHP_UPLOAD_MAX_FILESIZE: "20M"
     networks:
       - default
   db:
@@ -28,7 +30,6 @@ services:
       - MYSQL_ROOT_PASSWORD=Pass123
     volumes:
       - ./volumes/db/data:/var/lib/mysql
-      #- "/etc/localtime:/etc/localtime:ro"
     networks:
       - default
   
