@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  www:
+    image: smartycoder/apache:fpm
+    container_name: www
+    ports:
+        - "80:80"
+    restart: always
+    volumes:
+      - ./volumes/html:/var/www/html
+      - ./volumes/apache/conf.d:/etc/httpd/conf.d
+      - ./volumes/apache/httpd.conf:/etc/httpd/conf/httpd.conf"
+    networks:
+      - default
+  php:
+    image: smartycoder/centos:php-fpm7.3
+    container_name: php
+    restart: always
+    volumes:
+      - ./volumes/html:/var/www/html
+    environment:
+      PHP_XDEBUG_ENABLED: "True" # True/False
+      PHP_XDEBUG_REMOTE_HOST: 192.168.1.4
+      PHP_XDEBUG_REMOTE_PORT: 9000
+      PHP_SHORT_OPEN_TAG: "On"
+    networks:
+      - default
+  
