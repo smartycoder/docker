@@ -1,7 +1,7 @@
 
 # Setting optional environment variables in docker-compose.yml
 
-For the full list check [start.sh](start.sh)
+For the full list check [start.sh](./php/start.sh)
 
 ```
 environment:
