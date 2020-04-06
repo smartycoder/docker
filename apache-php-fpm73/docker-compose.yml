@@ -10,7 +10,7 @@ services:
     volumes:
       - ./volumes/html:/var/www/html
       - ./volumes/apache/conf.d:/etc/httpd/conf.d
-      - ./volumes/apache/httpd.conf:/etc/httpd/conf/httpd.conf"
+      - ./volumes/apache/httpd.conf:/etc/httpd/conf/httpd.conf
     networks:
       - default
   php:
