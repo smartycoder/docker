@@ -5,12 +5,12 @@ For the full list check [start.sh](./php/start.sh)
 
 ```
 environment:
-      PHP_XDEBUG_ENABLED: "True" # True/False
+      - PHP_XDEBUG_ENABLED=true
       # change the line below with your HOST IP address
-      PHP_XDEBUG_REMOTE_HOST: 192.168.1.2
-      PHP_XDEBUG_REMOTE_PORT: 9000
-      PHP_SHORT_OPEN_TAG: "On"
-      PHP_UPLOAD_MAX_FILESIZE: "20M"
+      - PHP_XDEBUG_REMOTE_HOST=192.168.1.2
+      - PHP_XDEBUG_REMOTE_PORT=9000
+      - PHP_SHORT_OPEN_TAG=On
+      - PHP_UPLOAD_MAX_FILESIZE=20M
 ```
 
 # Running sample using docker-compose.yml
@@ -26,7 +26,7 @@ services:
   www:
     .
       # change the line below with your HOST IP address
-      PHP_XDEBUG_REMOTE_HOST: 192.168.1.2
+      - PHP_XDEBUG_REMOTE_HOST=192.168.1.2
     .
 ```
 #### 2. Run ```docker-compose up -d```
