@@ -14,7 +14,7 @@ services:
     networks:
       - default
   php:
-    image: smartycoder/centos:php-fpm7.3
+    image: smartycoder/php:fpm7.3-centos7.7.1908
     container_name: php
     restart: always
     volumes:
