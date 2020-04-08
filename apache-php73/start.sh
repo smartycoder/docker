@@ -42,19 +42,19 @@ if [ ! -z "$PHP_SESSION_COOKIE_DOMAIN" ]; then sed -i "s/\;\?\\s\?session.cookie
 if [ ! -z "$PHP_SESSION_COOKIE_HTTPONLY" ]; then sed -i "s/\;\?\\s\?session.cookie_httponly = .*/session.cookie_httponly = $PHP_SESSION_COOKIE_HTTPONLY/" /etc/php.ini && echo "Set PHP session.cookie_httponly = $PHP_SESSION_COOKIE_HTTPONLY"; fi
 
 # enable xdebug coverage
-if [ "$PHP_XDEBUG_ENABLED" == "True" ]
+if [ "$PHP_XDEBUG_ENABLED" == "True" ] || [ "$PHP_XDEBUG_ENABLED" == "true" ]
 	then
-		echo "Enable XDebug ..."
-		echo "remote_host: ${PHP_XDEBUG_REMOTE_HOST}"
+		echo "[Xdebug] On"
+		echo "[Xdebug] remote_host: ${PHP_XDEBUG_REMOTE_HOST}"
 		
 		echo "xdebug.remote_enable=1" >> /etc/php.d/15-xdebug.ini
 		echo "xdebug.remote_host=${PHP_XDEBUG_REMOTE_HOST}" >> /etc/php.d/15-xdebug.ini
 		if [ "$PHP_XDEBUG_REMOTE_PORT" ]
 			then
-				echo "remote_port: ${PHP_XDEBUG_REMOTE_PORT}"
+				echo "[Xdebug] remote_port: ${PHP_XDEBUG_REMOTE_PORT}"
 				echo "xdebug.remote_port=${PHP_XDEBUG_REMOTE_PORT}" >> /etc/php.d/15-xdebug.ini
 		else
-				echo "remote_port: 9000"
+				echo "[Xdebug] remote_port: 9000"
 				echo "xdebug.remote_port=9000" >> /etc/php.d/15-xdebug.ini
 		fi
 		echo "xdebug.remote_connect_back=0" >> /etc/php.d/15-xdebug.ini
@@ -62,7 +62,7 @@ if [ "$PHP_XDEBUG_ENABLED" == "True" ]
 		echo "xdebug.remote_log=/tmp/xdebug.log" >> /etc/php.d/15-xdebug.ini
 
 else
-		echo "Disable XDebug ..."
+		echo "[Xdebug] Off"
 		sed -i "/zend_extension/s/^/#/" /etc/php.d/15-xdebug.ini
 fi
 

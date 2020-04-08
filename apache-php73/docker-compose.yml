@@ -2,7 +2,7 @@ version: '3'
 
 services:
   www:
-    image: smartycoder/apache:php7.3
+    image: smartycoder/php:7.3-apache-centos7
     container_name: www
     ports:
         - "80:80"
@@ -12,12 +12,12 @@ services:
       - ./volumes/www/conf/conf.d:/etc/httpd/conf.d:cached
       - ./volumes/www/conf/httpd.conf:/etc/httpd/conf/httpd.conf:cached
     environment:
-      PHP_XDEBUG_ENABLED: "True" # True/False
+      - PHP_XDEBUG_ENABLED=true
       # change the line below with your HOST IP address
-      PHP_XDEBUG_REMOTE_HOST: 192.168.1.4
-      PHP_XDEBUG_REMOTE_PORT: 9000
-      PHP_SHORT_OPEN_TAG: "On"
-      PHP_UPLOAD_MAX_FILESIZE: "20M"
+      - PHP_XDEBUG_REMOTE_HOST=192.168.1.2
+      - PHP_XDEBUG_REMOTE_PORT=9000
+      - PHP_SHORT_OPEN_TAG=On
+      - PHP_UPLOAD_MAX_FILESIZE=20M
     networks:
       - default
   db:
