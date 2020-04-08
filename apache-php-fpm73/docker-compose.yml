@@ -2,7 +2,7 @@ version: '3'
 
 services:
   www:
-    image: smartycoder/apache:fpm
+    image: smartycoder/php:fpm7.3-apache-centos7
     container_name: www
     ports:
         - "80:80"
