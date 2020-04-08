@@ -1,4 +1,4 @@
-FROM smartycoder/centos:php7.3
+FROM smartycoder/php:7.3-centos7.7.1908
 
 # Install Apache
 RUN yum -y update && \
